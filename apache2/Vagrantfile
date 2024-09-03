@@ -1,0 +1,29 @@
+Vagrant.configure("2") do |config|
+
+  # Define the VM
+  config.vm.define "vm_apache2" do |vm_apache2|
+    vm_apache2.vm.box = "generic/ubuntu2204"
+    vm_apache2.vm.hostname = "vm2"
+    vm_apache2.vm.network "private_network", ip: "192.168.56.102"
+    vm_apache2.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.cpus = 1
+    end
+
+    # Provisioning script
+    vm_apache2.vm.provision "shell", inline: <<-SHELL
+      sudo apt-get update
+      sudo apt-get install -y apache2 apache2-docs apache2-utils git
+
+      # Start APACHE2 service
+      sudo systemctl start apache2
+
+      # Enable APACHE2 to start on boot
+      sudo systemctl enable apache2
+    SHELL
+
+    # Port forwarding configuration
+    vm_apache2.vm.network "forwarded_port", guest: 80, host: 8081
+  end
+
+end
