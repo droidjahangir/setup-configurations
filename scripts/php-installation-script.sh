@@ -1,38 +1,31 @@
 #!/bin/bash
-sudo add-apt-repository ppa:ondrej/php
 
-apt update
+# Update package list and upgrade packages
+sudo apt-get update -y
+sudo apt-get upgrade -y
 
-sudo apt install software-properties-common
+# Install software-properties-common to manage PPAs
+sudo apt-get install -y software-properties-common
 
-sudo apt install apache2
+# Add the PHP repository
+sudo add-apt-repository ppa:ondrej/php -y
 
-sudo apt install  php5.6
+# Update package list after adding PHP repository
+sudo apt-get update -y
 
-sudo apt install php5.6-gd php5.6-mysql php5.6-imap php5.6-curl php5.6-intl php5.6-pspell php5.6-recode php5.6-sqlite3 php5.6-tidy php5.6-xmlrpc php5.6-xsl php5.6-zip php5.6-mbstring php5.6-soap php5.6-opcache libicu65 php5.6-common php5.6-json php5.6-readline php5.6-xml php5.6-cli
+# Install PHP and common extensions
+PHP_VERSION="7.4"  # Change this to the desired PHP version (e.g., 7.4, 8.0, 8.1)
+sudo apt-get install -y php$PHP_VERSION php$PHP_VERSION-cli php$PHP_VERSION-fpm php$PHP_VERSION-mbstring php$PHP_VERSION-xml php$PHP_VERSION-curl php$PHP_VERSION-zip php$PHP_VERSION-mysql php$PHP_VERSION-bcmath php$PHP_VERSION-gd php$PHP_VERSION-intl
 
-sudo a2enmod php5.6
+# Install additional extensions as needed
+sudo apt-get install -y php$PHP_VERSION-soap php$PHP_VERSION-ldap php$PHP_VERSION-imap
 
-sudo a2enmod rewrite
+# Verify PHP installation
+php -v
 
-systemctl restart apache2
+# Restart the web server if using Apache or Nginx with PHP-FPM
+# Uncomment the relevant line based on your web server
+# sudo systemctl restart apache2
+# sudo systemctl restart nginx
 
-
-sudo apt-get install  libpcre3-dev git  gcc make re2c php5.6-dev libapache2-mod-php5.6
-
-
- git clone https://github.com/phalcon/cphalcon.git
-
- cd cphalcon/
-
- git checkout phalcon-v1.3.4
-
-cd build
-
-sudo ./install
-
-echo "extension=phalcon.so" > /etc/php/5.6/mods-available/phalcon.ini
-
-sudo phpenmod -v 5.6 phalcon
-
-systemctl restart apache2
+echo "PHP $PHP_VERSION installation completed successfully!"
