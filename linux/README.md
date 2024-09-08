@@ -13,6 +13,12 @@
 * Hardware info `lshw -short`
 * Virtualization `systemd-detect-virt` and details info `sudo dmidecode -t system`
 
+### Few common command
+
+* `df -h` ---> disk space usages
+* `lsblk` ---> all available block devices
+* `du -sh` --> total size of current directory
+
 ### Networking
 
 Install this package for ipaddress
@@ -29,9 +35,19 @@ ipv4 ---> `ip -4 address` ipv6 ---> `ip -6 address`
 
 `ifconfig enp0s3` to see specific interface configuration
 
-Test a port is reachable to an specific id `telnet 192.168.10.113 22` or `nmap -p 22 192.168.12.113 -Pn`
+Test a port is reachable to a specific id `telnet 192.168.10.113 22` or `nmap -p 22 192.168.12.113 -Pn`
 
 Allowed and Rejected port to see `sudo iptables -vnL` Good to use `ufw`
+
+* `netstat -tupan` ---> see ip and port to open
+* `ss -tupan` --------> see ip and port to open
+* `lsof -u user_name` -> see which files are opened by this user
+* `sudo lsof -c nginx` -------> see all files which are opened by nginx
+* `lsof -iTCP -sTCP:LISTEN` --> show which process are used to open for listening
+* `telnet  192.168.0.113 22` -> check this port are opened by this ip
+* 
+**nmap** this is a port scanner tool
+* `sudo nmap 192.168.1.1` ---> this show which ports are open for this ip address
 
 **router**
 
@@ -47,8 +63,15 @@ Allowed and Rejected port to see `sudo iptables -vnL` Good to use `ufw`
 
 * send 4 packet `ping -c 4 ubuntu.com`
 * send packet with 0.4 millisecond interval, default interval is 1 second `ping -i 0.4 -c 5 ubuntu.com`
-* check theres any internet connectivity issue in public DNS server in cloudflare `ping 1.1.1.1`
+* check any internet connectivity issue in public DNS server in cloudflare `ping 1.1.1.1`
 
 **Openssh**
 
 * install openssh `sudo apt update && sudo apt install openssh-server openssh-client`
+
+### Domain
+
+* `dig -t ns cisco.com` --->> it send me ip address for this domain
+
+
+
