@@ -1,0 +1,12 @@
+# Cake php deployment process
+
+
+### Create certificate
+install packages
+```shell
+apt-get instal certbot python3-certbot-nginx python3-certbot-apache
+```
+generate certificate for nginx `certbot --nginx -d domain.name.com` it will automatically update nginx config for certification
+generate certificate for apache2 `certbot --apache -d domain_name.com` it need to install `python3-certbot-apache` package
+
+

@@ -12,7 +12,3 @@ ssh-copy-id root@192.168.1.1
 ```
 
 we can disable password authentication in server setting `/etc/ssh/sshd_config`
-
-
-
-
