@@ -57,7 +57,7 @@ Allowed and Rejected port to see `sudo iptables -vnL` Good to use `ufw`
 * Down or Up an interface `ifconfig enp0s3 downn` or `ifconfig enp0s3 up` 
 * delete gateway or ip `route del default gw 192.168.0.1` or `route add default gw 192.168.0.1`
 * set macAddress `ip link set dev enp0s3 address 08:00:27:51:05:01`
-* check networkmanager status `sudo systemctl status NetworkManager`
+* check network manager status `sudo systemctl status NetworkManager`
 
 **Testing and troubleshooting**
 

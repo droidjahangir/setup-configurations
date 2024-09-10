@@ -1,0 +1,75 @@
+version: "3.8"
+
+services:
+
+  # php service container
+  laravel_shompad_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: laravel_app_image
+    container_name: laravel_shompod_app
+    restart: unless-stopped
+    depends_on:
+      - laravel_shompad_mysql_database
+    working_dir: /var/www
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./:/var/www
+    networks:
+      - laravel_shompad_app_network
+
+  # nginx service
+  shompod_nginx_webserver:
+    image: nginx:alpine
+    container_name: shompod_nginx_webserver_container
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    depends_on:
+      - laravel_shompad_app
+      - laravel_shompad_mysql_database
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx/:/etc/nginx/conf.d/
+    networks:
+      - laravel_shompad_app_network
+
+  # database server
+  laravel_shompad_mysql_database:
+    image: mysql:latest
+    container_name: laravel_shompad_mysql_database_container
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - laravel-shompad-db-data:/var/lib/mysql
+    networks:
+      - laravel_shompad_app_network
+
+  # GUI tool for mysql
+#  laravel_shompad_phpmyadmin:
+#    image: phpmyadmin:5.2.1-apache
+#    container_name: laravel_shompad_phpmyadmin_container
+#    restart: unless-stopped
+#    ports:
+#      - "8383:80"
+#    environment:
+#      PMA_HOST: laravel_shompad_mysql_database
+#      PMA_PORT: 3306
+#      PMA_USER: root
+#      PMA_PASSWORD: password
+
+volumes:
+  laravel-shompad-db-data:
+    driver: local
+
+networks:
+  laravel_shompad_app_network:
+    driver: bridge

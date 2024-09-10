@@ -1,0 +1,62 @@
+version: "3.8"
+
+services:
+
+  # Laravel application service
+  laravel_shompad_app:
+    build:
+      context: ../docker-compose
+      dockerfile: Dockerfile
+    image: laravel_app_image
+    container_name: laravel_shompad_app
+    restart: unless-stopped
+    working_dir: /var/www
+    command: php artisan serve --host=0.0.0.0 --port=8000
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/var/www
+    environment:
+      - DB_HOST=laravel_shompad_mysql_database
+      - DB_PORT=${DB_PORT}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    networks:
+      - laravel_shompad_app_network
+
+  # MySQL database service
+  laravel_shompad_mysql_database:
+    image: mysql:latest
+    container_name: laravel_shompad_mysql_database_container
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - laravel-shompad-db-data:/var/lib/mysql
+    networks:
+      - laravel_shompad_app_network
+
+  # phpMyAdmin service (optional)
+  laravel_shompad_phpmyadmin:
+    image: phpmyadmin:5.2.1-apache
+    container_name: laravel_shompad_phpmyadmin_container
+    restart: unless-stopped
+    ports:
+      - "8383:80"
+    environment:
+      PMA_HOST: laravel_shompad_mysql_database
+      PMA_PORT: ${DB_PORT}
+
+volumes:
+  laravel-shompad-db-data:
+    driver: local
+
+networks:
+  laravel_shompad_app_network:
+    driver: bridge
