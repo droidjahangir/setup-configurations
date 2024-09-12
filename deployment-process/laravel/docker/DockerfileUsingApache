@@ -1,0 +1,57 @@
+FROM php:7.4-apache
+
+WORKDIR /var/www/html
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpng-dev \
+    libonig-dev \
+    libzip-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    locales \
+    zip \
+    jpegoptim optipng pngquant gifsicle \
+    unzip \
+    git \
+    nano \
+    curl \
+    libxml2-dev \
+    libssl-dev \
+    libsqlite3-dev \
+    libpq-dev \
+    libsnmp-dev \
+    libmagickwand-dev
+
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+
+# Enable Apache mod_rewrite
+RUN a2enmod rewrite
+
+# Install Composer
+COPY --from=composer:2.1 /usr/bin/composer /usr/bin/composer
+RUN composer clear-cache
+
+# Add the application to the image
+COPY . /var/www/html
+
+# Set file permissions
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html
+
+# Install Laravel dependencies
+RUN composer install --ignore-platform-reqs --optimize-autoloader
+RUN composer update
+
+# Set up environment file
+COPY .env.example .env
+
+# Expose port 80 (Apache default port)
+EXPOSE 80
+
+# Run Apache in the foreground
+CMD ["apache2-foreground"]

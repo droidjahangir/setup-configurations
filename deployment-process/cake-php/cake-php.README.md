@@ -10,3 +10,5 @@ generate certificate for nginx `certbot --nginx -d domain.name.com` it will auto
 generate certificate for apache2 `certbot --apache -d domain_name.com` it need to install `python3-certbot-apache` package
 
 
+
+ip ---> 157.245.62.142

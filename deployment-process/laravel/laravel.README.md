@@ -14,5 +14,13 @@ https://github.com/laradock/php-fpm
 6. 
 
 
+## Deployment process with apache server
+
+steps:
+1. Create Dockerfile from `./docker/DockerfileUsingApache`
+2. Create image using this Dockerfile definition ``
+
+
+
 
 

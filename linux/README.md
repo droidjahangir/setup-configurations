@@ -19,6 +19,11 @@
 * `lsblk` ---> all available block devices
 * `du -sh` --> total size of current directory
 
+**Search file content in a directory**
+```shell
+grep -ri "search-term" /path/to/directory
+```
+
 ### Networking
 
 Install this package for ipaddress
@@ -72,6 +77,4 @@ Allowed and Rejected port to see `sudo iptables -vnL` Good to use `ufw`
 ### Domain
 
 * `dig -t ns cisco.com` --->> it send me ip address for this domain
-
-
 
