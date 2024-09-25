@@ -21,6 +21,13 @@ steps:
 2. Create image using this Dockerfile definition ``
 
 
+Permission project files to apache user
+```shell
+chown -R www-data:www-data <project_location>
+chmod -R 755 <project_directory>
+```
 
+[//]: # (sudo chown -R www-data:www-data /var/www/your_laravel_app/storage)
 
+[//]: # (sudo chown -R www-data:www-data /var/www/your_laravel_app/bootstrap/cache)
 

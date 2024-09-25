@@ -78,13 +78,3 @@ Allowed and Rejected port to see `sudo iptables -vnL` Good to use `ufw`
 
 * `dig -t ns cisco.com` --->> it send me ip address for this domain
 
-
-
-
-db.createUser({
-user: "admin",
-pwd: "Admin@1234",
-roles: [
-{ role: "readWrite", db: "admin" } // Example: role with readWrite access on a specific database
-]
-})

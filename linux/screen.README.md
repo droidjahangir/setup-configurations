@@ -2,6 +2,7 @@
 
 Enter a screen `screen` or `screen -S monitor` --> monitor for screen name
 
+* `screen -S <name>` create a screen
 * `screen -r` ---> reattach a screen
 * `CTRL a+d` ---> detach from a screen
 * `screen -r session_name/id` ---> reattach to a screen

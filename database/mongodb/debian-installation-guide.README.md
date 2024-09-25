@@ -29,11 +29,20 @@ sudo apt update
 sudo apt-get install -y mongodb-mongosh
 ```
 
+* `mongo` command is old but it recommend to use `mongosh`.
+Access mongoDB shell ---> `mongosh`
 Connect to mongod server `mongosh "mongodb://127.0.0.1:27017"`
 
 update mongo configuration to access it from anywhere or a specific IP addresses `cat /etc/mongod.conf`
 
 add this line `bindIp: 0.0.0.0`
+
+### Create database
+* switch to or create a new database `use test_database;`
+* Insert data to create database `db.myCollection.insertOne({ name: "First Document" })`
+* verify `show dbs;`
+
+
 
 Add new user
 
@@ -41,12 +50,16 @@ Add new user
 > use admin
 
 > db.createUser({
-  user: "myUser",
-  pwd: "myPassword",
+  user: "molwa_audit_log",
+  pwd: "Molwa@1324",
   roles: [
-    { role: "readWrite", db: "myDatabase" }
+    { role: "readWrite", db: "molwa_audit_logs" }
   ]
 })
 ```
+
+user ---> molwa_audit_log
+pass ---> Molwa@1324
+db   ---> molwa_audit_logs
 
 get list of users `db.getUsers()`
