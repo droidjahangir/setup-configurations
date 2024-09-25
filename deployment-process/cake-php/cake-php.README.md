@@ -12,3 +12,12 @@ generate certificate for apache2 `certbot --apache -d domain_name.com` it need t
 
 
 ip ---> 157.245.62.142
+
+
+        location / {
+            # Apply the rate limit to this location
+            limit_req zone=one burst=5 nodelay;
+
+            # Pass traffic to the upstream
+            proxy_pass http://bcc;
+        }

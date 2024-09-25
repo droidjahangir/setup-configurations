@@ -16,3 +16,11 @@ SET GLOBAL read_only = 1;
 revert it to enable
 SET GLOBAL read_only = 0;
 ```
+
+
+## Backup
+```shell
+mysqldump --no-tablespaces --single-transaction -h localhost -u root -p --databases npf_polling npfministry npfministry_common npfministryadmin | gzip > ministry_staging_2024_09_25.sql.gz
+```
+
+restore from this backup file `zcat ministry_staging_2024_09_25.sql.gz | mysql -u root -p`

@@ -5,4 +5,5 @@
 * `sudo rsync -av --delete /etc/ ~/etc-backup/` ---> this can sync deleted files
 * `sudo rsync -av --exclude-from-'/home/student/exclude_files.txt' /etc/ ~/etc-backup/` ---> this can exclude anything which are defined in this file
 * `sudo rsync -av -e ssh /etc/ student@192.168.0.20:~/etc-backup/` ---> It will back up to remote server data
-* 
+
+`rsync -avP /mopa/mopa-ictd/db-dump/ictd/20240822 root@10.12.2.196:/scripts/` transfer data to remote server
