@@ -1,0 +1,33 @@
+# Vagrantfile to create 3 VMs with private IPs
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  # Array to define the VM configurations
+  nodes = [
+    { :hostname => "mongo-node1", :ip => "192.168.56.101" },
+    { :hostname => "mongo-node2", :ip => "192.168.56.102" },
+    { :hostname => "mongo-node3", :ip => "192.168.56.103" }
+  ]
+
+  # Loop through each VM configuration
+  nodes.each do |node|
+    config.vm.define node[:hostname] do |node_config|
+      node_config.vm.box = "ubuntu/jammy64"  # Ubuntu 22.04 LTS box
+      node_config.vm.hostname = node[:hostname]
+      node_config.vm.network :private_network, ip: node[:ip]
+
+      # Provision each VM with initial setup (optional)
+      node_config.vm.provision "shell", inline: <<-SHELL
+        sudo apt-get update
+        sudo apt-get install -y htop  # Example of basic provisioning
+      SHELL
+
+      # Customize VirtualBox settings for each VM (optional)
+      node_config.vm.provider "virtualbox" do |vb|
+        vb.memory = "1024"  # 1GB RAM
+        vb.cpus = 1         # 1 CPU
+      end
+    end
+  end
+end
