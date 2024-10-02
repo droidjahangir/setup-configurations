@@ -1,5 +1,9 @@
 # Percona cluster
 
+**Step-1**
+Install relevant packages, Official documentation : https://docs.percona.com/percona-xtradb-cluster/8.0/apt.html
+
+
 ### Master node configuration
 configure haproxy in percona cluster `/etc/haproxy/haproxy.cfg`
 ```shell

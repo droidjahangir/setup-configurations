@@ -78,3 +78,8 @@ Allowed and Rejected port to see `sudo iptables -vnL` Good to use `ufw`
 
 * `dig -t ns cisco.com` --->> it send me ip address for this domain
 
+### Find public ip address
+```shell
+curl ifconfig.io
+```
+

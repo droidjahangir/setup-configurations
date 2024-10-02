@@ -25,6 +25,7 @@ scp -rp -P 22 mydir1/ root@192.168.13.100:~
 copy remote desktop password to local pc in Desktop directory
 ```shell
 scp root@192.168.13.100:/etc/passwd /home/student/Desktop
+# scp <from> <to>
 ```
 
 

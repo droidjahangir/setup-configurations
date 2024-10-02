@@ -101,3 +101,10 @@ for (let i = 1; i <= 100; i++) {
 ```
 
 get all documents `> db.testCollection.find().pretty();`
+
+----------------**completed**---------------
+
+### Some important configuration
+* make a node as read preference `db.getMongo().setReadPref("secondary")`
+
+
