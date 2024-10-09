@@ -83,3 +83,14 @@ Allowed and Rejected port to see `sudo iptables -vnL` Good to use `ufw`
 curl ifconfig.io
 ```
 
+
+### Zip or compress a directory
+```shell
+zip -r archive_name.zip folder1
+```
+
+Make higher compress level to make it's size lower. (compress level from 1-10)
+```shell
+zip -r -9 myfolders.zip folder1
+```
+

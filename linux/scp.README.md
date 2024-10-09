@@ -41,32 +41,3 @@ scp user1@IP1:/path_to_source_file user2@IP2:/path_to_destination
 
 
 ### If we need to transfer between secure connection 
-
-
-
-<VirtualHost *:80>
-
-        ServerAdmin webmaster@kgcr.aalo.xyz
-        DocumentRoot /var/www/single-code-base/webroot
-        ServerName kalukhaligc.edu.bd
-        ServerAlias www.kalukhaligc.edu.bd
-
-        <Directory  "/var/www/single-code-base/webroot">
-                Options +Indexes +Includes +FollowSymLinks +MultiViews
-                AllowOverride All
-#               Require all granted
-        </Directory>
-
-
-        ErrorLog ${APACHE_LOG_DIR}/kgcr.aalo.xyz.error.log
-        CustomLog ${APACHE_LOG_DIR}/kgcr.aalo.xyz.access.log combined
-
-#RewriteEngine on
-#RewriteCond %{SERVER_NAME} =sel.pathshala.xyz [OR]
-#RewriteCond %{SERVER_NAME} =www.sel.pathshala.xyz
-#RewriteCond %{SERVER_NAME} =saspect.aalo.xyz
-RewriteEngine on
-RewriteCond %{SERVER_NAME} =www.kalukhaligc.edu.bd [OR]
-RewriteCond %{SERVER_NAME} =kalukhaligc.edu.bd
-RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
-</VirtualHost>

@@ -26,5 +26,5 @@ http {
 ```
 
 
-siege -v -c 1 -r 100 https://www.bcc.gov.bd/
+siege -v -c 1 -r 100 https://www.domain.gov.bd/
 

@@ -56,11 +56,11 @@ backend pxc-back
 mode tcp
 balance leastconn
 option httpchk
-server DB1 10.0.0.451:3306 check port 9200 inter 12000 rise 3 fall 3
-server DB2 10.0.0.452:3306 check port 9200 inter 12000 rise 3 fall 3
-server DB3 10.0.0.453:3306 check port 9200 inter 12000 rise 3 fall 3
-server DB4 10.0.0.454:3306 check port 9200 inter 12000 rise 3 fall 3
-server DB5 10.0.0.455:3306 check port 9200 inter 12000 rise 3 fall 3
+server DB1 10.0.0.101:3306 check port 9200 inter 12000 rise 3 fall 3
+server DB2 10.0.0.102:3306 check port 9200 inter 12000 rise 3 fall 3
+server DB3 10.0.0.103:3306 check port 9200 inter 12000 rise 3 fall 3
+server DB4 10.0.0.104:3306 check port 9200 inter 12000 rise 3 fall 3
+server DB5 10.0.0.231:3306 check port 9200 inter 12000 rise 3 fall 3
 
 backend stats-back
 mode http
@@ -73,11 +73,11 @@ backend pxc-onenode-back
 mode tcp
 balance leastconn
 option httpchk
-server DB1 10.0.0.249:3306 check port 9200 inter 12000 rise 3 fall 3
-server DB2 10.0.0.259:3306 check port 9200 inter 12000 rise 3 fall 3
-server DB3 10.0.0.349:3306 check port 9200 inter 12000 rise 3 fall 3
-server DB4 10.0.0.244:3306 check port 9200 inter 12000 rise 3 fall 3
-server DB5 10.0.0.279:3306 check port 9200 inter 12000 rise 3 fall 3
+server DB1 10.0.0.101:3306 check port 9200 inter 12000 rise 3 fall 3
+server DB2 10.0.0.102:3306 check port 9200 inter 12000 rise 3 fall 3
+server DB3 10.0.0.103:3306 check port 9200 inter 12000 rise 3 fall 3
+server DB4 10.0.0.104:3306 check port 9200 inter 12000 rise 3 fall 3
+server DB5 10.0.0.231:3306 check port 9200 inter 12000 rise 3 fall 3
 ```
 
 
