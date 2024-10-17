@@ -18,9 +18,15 @@ SET GLOBAL read_only = 0;
 ```
 
 
-## Backup
+## DB Backup
 ```shell
 mysqldump --no-tablespaces --single-transaction -h localhost -u root -p --databases npf_polling npfministry npfministry_common npfministryadmin | gzip > ministry_staging_2024_09_25.sql.gz
 ```
 
+## Restore db backup
 restore from this backup file `zcat ministry_staging_2024_09_25.sql.gz | mysql -u root -p`
+
+## Transfer data
+```shell
+scp directorate_staging_2024_10_17.sql.gz root@131.186.51.242:/root/
+```

@@ -1,0 +1,2 @@
+# Local services
+mysqlchk        9200/tcp                # mysqlchk

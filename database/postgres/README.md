@@ -16,6 +16,8 @@ sudo apt -y install postgresql
 * check version `SELECT version();`
 * quite from postgres console `\q`
 
+
+## Create user
 Alter super user password
 ```shell
 ALTER USER postgres WITH PASSWORD 'U3m$7*`)S&|k}';
@@ -25,6 +27,33 @@ Create a new user
 ```shell
 CREATE USER nidhi WITH PASSWORD 'Nidhi@1324';
 ```
+ex:
+```shell
+user: hsms
+pass: hsms@1324
+```
+
+## Create database
+```shell
+CREATE DATABASE my_test_db;
+```
+
+List database `\l`
 
 
+## New user permission
 
+```shell
+GRANT ALL PRIVILEGES ON DATABASE db_hsms TO hsms;
+```
+
+Sometimes it doesn't work, we need to grant more permission for full control to this database
+
+```shell
+GRANT USAGE ON SCHEMA public TO hsms;
+GRANT CREATE ON SCHEMA public TO hsms;
+
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO hsms;
+
+ALTER SCHEMA public OWNER TO hsms;
+```

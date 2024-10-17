@@ -94,3 +94,9 @@ Make higher compress level to make it's size lower. (compress level from 1-10)
 zip -r -9 myfolders.zip folder1
 ```
 
+## Date time
+
+update server date time
+```shell
+timedatectl set-timezone Asia/Dhaka
+```
