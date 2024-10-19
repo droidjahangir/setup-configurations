@@ -4,9 +4,12 @@ N:B: get details from this digital ocean article `https://www.digitalocean.com/c
 
 Create a tunnel
 ```shell
-ssh -i ~/.ssh/id_rsa -D 1337 -f -C -q -N sammy@your_domain
+ssh -f -N -M -S /tmp/ssh-socket-2 -o 'ProxyJump root@131.186.29.212' root@10.92.3.896
 ```
+Here `ProxyJump root@131.186.29.212` This is public or jump server then `root@10.92.3.896` is private server.
+We access private server through public server.
 
+We can also create tunnel from this command `ssh -i ~/.ssh/id_rsa -D 1337 -f -C -q -N sammy@your_domain`
 * -D: Tells SSH that we want a SOCKS tunnel on the specified port number (you can choose a number between 1025 and 65536)
 * -f: Forks the process to the background 
 * -C: Compresses the data before sending it 
