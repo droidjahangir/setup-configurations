@@ -29,3 +29,15 @@ systemctl start redis-server.service
 # restart redis service
 systemctl restart redis-server.service
 ```
+
+## Change configuration
+
+allow port 6379 to access anywhere or any specific ip address
+
+Open `/etc/redis/redis.conf` file and change `bind` to ip address and `protected-mode` to `no`
+```shell
+bind 0.0.0.0
+
+protected-mode no
+```
+
