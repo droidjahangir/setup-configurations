@@ -100,3 +100,9 @@ update server date time
 ```shell
 timedatectl set-timezone Asia/Dhaka
 ```
+
+### Check which process are used this port 
+```shell
+sudo lsof -i :6443
+```
+

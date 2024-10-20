@@ -67,6 +67,14 @@ sudo systemctl enable --now containerd
 systemctl status containerd
 ```
 
+Open crictl config file `vim /etc/crictl.yaml`
+
+add those line 
+```shell
+runtime-endpoint: unix:///run/containerd/containerd.sock
+image-endpoint: unix:///run/containerd/containerd.sock
+```
+
 ### Step - 06
 Install runc
 
@@ -90,16 +98,17 @@ Install kubeadm, kubectl, kubelet
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 sudo apt-get update
-sudo apt-get install -y kubelet=1.29.6-1.1 kubeadm=1.29.6-1.1 kubectl=1.29.6-1.1 --allow-downgrades --allow-change-held-packages
+sudo apt-get install -y kubelet=1.31.1-1.1 kubeadm=1.31.1-1.1 kubectl=1.31.1-1.1 --allow-downgrades --allow-change-held-packages
 sudo apt-mark hold kubelet kubeadm kubectl
 
 kubeadm version
 kubelet --version
 kubectl version --client
+
 ```
 
 ### Step - 09 
@@ -134,8 +143,8 @@ kubectl apply -f custom-resources.yaml
 # Worker node steps
 Follow step (1-8) as same and step - 11 to install calico. then join to master node (control plan)
 ```shell
-kubeadm join 192.168.10.24:6443 --token izu8yw.bswk5ai1muwvqcuh \
---discovery-token-ca-cert-hash sha256:d7aba407c1b8935ca1d1cc75bb199e672792e26946f587b526fea1415e3cba39
+kubeadm join 192.168.10.24:6443 --token qdor3a.csnj5re13tcy591l \
+	--discovery-token-ca-cert-hash sha256:67ae212402141d2cfbc176cd5fcd7f812875ce508c64aa1b57b81daefaf9bd8d
 ```
 
 If we forgot to join token, Then we can regenerate this token using this command
