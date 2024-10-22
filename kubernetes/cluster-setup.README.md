@@ -114,7 +114,7 @@ kubectl version --client
 ### Step - 09 
 Initialize or Bootstrap control plan
 ```shell
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=172.31.89.68 --node-name master
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=192.168.10.24 --node-name master
 ```
 This will generate token and sha256 like `kubeadm join 192.168.10.24:6443 --token izu8yw.bswk5ai1muwvqcuh \
 --discovery-token-ca-cert-hash sha256:d7aba407c1b8935ca1d1cc75bb199e672792e26946f587b526fea1415e3cba39`
@@ -122,12 +122,17 @@ This will generate token and sha256 like `kubeadm join 192.168.10.24:6443 --toke
 
 
 ### Step - 10
-Prepare kubeconfig in master
+**Control plan initialization**
+To start using your cluster, you need to run the following as a regular user:
 ```shell
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
+
+OR
+
+need to run this command `export KUBECONFIG=/etc/kubernetes/admin.conf`
 
 ### Step - 11
 Install calico

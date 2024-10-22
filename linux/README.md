@@ -50,7 +50,12 @@ Allowed and Rejected port to see `sudo iptables -vnL` Good to use `ufw`
 * `sudo lsof -c nginx` -------> see all files which are opened by nginx
 * `lsof -iTCP -sTCP:LISTEN` --> show which process are used to open for listening
 * `telnet  192.168.0.113 22` -> check this port are opened by this ip
-* 
+* `df -TH` Displays disk space usage in a human-readable format
+* `lscpu` Provides detailed information about the CPU architecture
+* `free -m` Shows memory usage (RAM and swap) in megabytes
+
+
+
 **nmap** this is a port scanner tool
 * `sudo nmap 192.168.1.1` ---> this show which ports are open for this ip address
 

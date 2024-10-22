@@ -15,5 +15,13 @@ Install this package `sudo apt-get install iptables-persistent`
 
 during save `sudo netfilter-persistent save`
 
+Or
+
+```shell
+sudo iptables-save > /etc/iptables/rules.v4
+```
+
+
+
 
 
