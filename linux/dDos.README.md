@@ -1,6 +1,13 @@
 # DDos
 
-install siege to make dDos attack
+install ab(apache benchmark) to make dDos
+```shell
+ab -n 1000 -c 100 http://yourdomain.com/
+```
+* n ==> number of request
+* c ==> concurrent request
+
+OR install siege to make dDos attack
 ```shell
 siege -v -c 1 -r 100 https://www.domain.gov.bd/
 ```
