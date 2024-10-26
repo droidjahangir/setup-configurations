@@ -1,5 +1,7 @@
 ## Create a vagrant file to create a new virtual machine
 
+Official documentation to install Nginx : https://nginx.org/en/linux_packages.html?_ga=2.101341121.1335066733.1729654843-58373046.1725183925
+
 ```shell
 vagrant init
 ```

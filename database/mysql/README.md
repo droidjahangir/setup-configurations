@@ -1,11 +1,22 @@
 # Mysql 
 
+## Installation Guide
+Official documentation to install mysql : https://dev.mysql.com/doc/mysql-installation-excerpt/8.0/en/linux-installation.html
+
+We can download mysql .deb file or install using apt
+
+I prefer to install using apt
+```shell
+sudo apt-get install mysql-server
+```
+
+
 ### Create mysql user
 
 ```shell
-CREATE USER 'jcc_user'@'localhost' IDENTIFIED BY 'N#was|mnT';
-CREATE DATABASE IF NOT EXISTS ems_web_jcc DEFAULT CHARACTER SET = 'utf8' DEFAULT COLLATE 'utf8_general_ci';
-GRANT ALL PRIVILEGES ON ems_web_jcc.* TO jcc_user@localhost WITH GRANT OPTION;
+CREATE USER 'square_denims'@'localhost' IDENTIFIED BY 'y?ur-W132-SF?w';
+CREATE DATABASE IF NOT EXISTS db_square_denims DEFAULT CHARACTER SET = 'utf8' DEFAULT COLLATE 'utf8_general_ci';
+GRANT ALL PRIVILEGES ON db_square_denims.* TO square_denims@localhost WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 ```
 
@@ -24,9 +35,20 @@ mysqldump --no-tablespaces --single-transaction -h localhost -u root -p --databa
 ```
 
 ## Restore db backup
-restore from this backup file `zcat ministry_staging_2024_09_25.sql.gz | mysql -u root -p`
+
+**restore zip file**
+restore from this backup file
+```shell
+zcat ministry_staging_2024_09_25.sql.gz | mysql -u root -p
+```
+
+**restore sql file**
+```shell
+mysql -u username -p database_name < /path/to/yourfile.sql
+```
 
 ## Transfer data
 ```shell
 scp directorate_staging_2024_10_17.sql.gz root@131.186.51.242:/root/
+
 ```

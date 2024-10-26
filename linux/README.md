@@ -24,6 +24,11 @@
 grep -ri "search-term" /path/to/directory
 ```
 
+**Search a file**
+```shell
+find . -name "myfile.txt"
+```
+
 ### Networking
 
 Install this package for ipaddress
@@ -111,3 +116,4 @@ timedatectl set-timezone Asia/Dhaka
 sudo lsof -i :6443
 ```
 
+curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash -s -- --mariadb-server-version="mariadb-10.6"

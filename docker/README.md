@@ -9,5 +9,8 @@
 * `docker exec -it [container_name_or_id] [command]` ----> exec to a container and run command. ex: `docker exec -it [container_name_or_id] /bin/sh`
 * 
 
-
+#### Build Docker from image
+```shell
+sudo docker build -t jahangir/redis-server:latest .
+```
 

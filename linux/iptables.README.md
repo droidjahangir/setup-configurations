@@ -5,10 +5,11 @@
 * `iptables -A INPUT -p tcp --dport 2049 -j ACCEPT` --> allow port
 
 ### Check ip tables rules
-
 ```shell
-sudo iptables -L -n
+iptables -L -v -n
 ```
+* `v` for verboose
+* `n` for numeric output
 
 ### Persist Ip table rules
 Install this package `sudo apt-get install iptables-persistent`
@@ -20,8 +21,5 @@ Or
 ```shell
 sudo iptables-save > /etc/iptables/rules.v4
 ```
-
-
-
 
 
