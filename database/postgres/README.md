@@ -25,17 +25,17 @@ ALTER USER postgres WITH PASSWORD 'U3m$7*`)S&|k}';
 
 Create a new user
 ```shell
-CREATE USER nidhi WITH PASSWORD 'Nidhi@1324';
+CREATE USER erp WITH PASSWORD 'y?ur-W132-SF?w';
 ```
 ex:
 ```shell
-user: hsms
-pass: hsms@1324
+user: erp
+pass: y?ur-W132-SF?w
 ```
 
 ## Create database
 ```shell
-CREATE DATABASE my_test_db;
+CREATE DATABASE db_erp;
 ```
 
 List database `\l`
@@ -50,10 +50,16 @@ GRANT ALL PRIVILEGES ON DATABASE db_hsms TO hsms;
 Sometimes it doesn't work, we need to grant more permission for full control to this database
 
 ```shell
-GRANT USAGE ON SCHEMA public TO hsms;
-GRANT CREATE ON SCHEMA public TO hsms;
+GRANT USAGE ON SCHEMA public TO erp;
+GRANT CREATE ON SCHEMA public TO erp;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO erp;
 
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO hsms;
-
-ALTER SCHEMA public OWNER TO hsms;
+ALTER SCHEMA public OWNER TO erp;
 ```
+
+
+backend domain: api-erp.jukto.com
+frontend base: erp.jukto.com
+frontend organization: organizationone-erp.jukto.com
+db_user: erp
+db_pass: y?ur-W132-SF?w
