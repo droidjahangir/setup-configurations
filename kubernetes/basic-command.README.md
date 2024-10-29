@@ -1,4 +1,4 @@
-# Common Commands
+## Common Commands
 
 ## Node
 
@@ -14,3 +14,16 @@
 
 * Get services `k get svc`
 * Get all services `k get services --all-namespaces`
+
+
+## Create API server
+```shell
+kubectl proxy
+```
+
+Get rest api response from kubernetes
+```shell
+curl localhost:8001/apis
+```
+
+

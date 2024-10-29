@@ -8,15 +8,27 @@ official link : https://www.namecheap.com/support/knowledgebase/article.aspx/944
 openssl req -new -newkey rsa:2048 -nodes -keyout yourdomain_tld.key -out yourdomain_tld.csr
 ```
 
-## Verify
-Verify csr
+## Verify Certificate csr and private key
+
+**First check both csr and private key generate same hash**
+
+For the certificate:
 ```shell
-openssl req -text -noout -verify -in my-csr.csr
-OR
-openssl req -in mycsr.csr -noout -text
+openssl x509 -noout -modulus -in /cert/example.crt | openssl md5
 ```
 
-Verify crt file
+For private key
 ```shell
-openssl x509 -in server.crt -text -noout
+openssl rsa -noout -modulus -in /cert/example.key | openssl md5
 ```
+
+Get private key info
+```shell
+openssl rsa -check -in /cert/example.key
+```
+
+View certificate information
+```shell
+openssl x509 -in /cert/example.crt -text -noout
+```
+
