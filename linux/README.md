@@ -8,7 +8,7 @@
 * CPU info `lscpu`
 * Memory info `free -h`
 * Disk info `df -h`
-* Disk pertition `lsblk`
+* Disk partition `lsblk`
 * Network info `ip a` routing table `ip route` or `ifconfig` it needs to install net-tools
 * Hardware info `lshw -short`
 * Virtualization `systemd-detect-virt` and details info `sudo dmidecode -t system`

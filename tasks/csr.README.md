@@ -32,3 +32,11 @@ View certificate information
 openssl x509 -in /cert/example.crt -text -noout
 ```
 
+Check apache configuration
+```shell
+apache2ctl -S
+```
+
+
+10.12.2.4
+S?>TRer8v_7024!

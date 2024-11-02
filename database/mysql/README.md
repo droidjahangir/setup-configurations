@@ -15,8 +15,8 @@ sudo apt-get install mysql-server
 
 ```shell
 CREATE USER 'square_denims'@'localhost' IDENTIFIED BY 'y?ur-W132-SF?w';
-CREATE DATABASE IF NOT EXISTS db_square_denims DEFAULT CHARACTER SET = 'utf8' DEFAULT COLLATE 'utf8_general_ci';
-GRANT ALL PRIVILEGES ON db_square_denims.* TO square_denims@localhost WITH GRANT OPTION;
+CREATE DATABASE IF NOT EXISTS square_denim_db DEFAULT CHARACTER SET = 'utf8' DEFAULT COLLATE 'utf8_general_ci';
+GRANT ALL PRIVILEGES ON square_denim_db.* TO square_denims@localhost WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 ```
 
