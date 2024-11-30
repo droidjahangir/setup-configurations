@@ -6,6 +6,7 @@
 * kernel and OS info `uname -a`
 * OS release info `cat /etc/os-release`
 * CPU info `lscpu`
+* get number or worker_process `nproc`
 * Memory info `free -h`
 * Disk info `df -h`
 * Disk partition `lsblk`
@@ -45,7 +46,8 @@ ipv4 ---> `ip -4 address` ipv6 ---> `ip -6 address`
 
 `ifconfig enp0s3` to see specific interface configuration
 
-Test a port is reachable to a specific id `telnet 192.168.10.113 22` or `nmap -p 22 192.168.12.113 -Pn`
+* Test a port is reachable to a specific id `telnet 192.168.44.113 22` or `nmap -p 22 192.168.44.113 -Pn`
+* We can also check it using netcat `nc -zv 192.333.143.55 4567`
 
 Allowed and Rejected port to see `sudo iptables -vnL` Good to use `ufw`
 
@@ -54,7 +56,7 @@ Allowed and Rejected port to see `sudo iptables -vnL` Good to use `ufw`
 * `lsof -u user_name` -> see which files are opened by this user
 * `sudo lsof -c nginx` -------> see all files which are opened by nginx
 * `lsof -iTCP -sTCP:LISTEN` --> show which process are used to open for listening
-* `telnet  192.168.0.113 22` -> check this port are opened by this ip
+* `telnet  192.168.0.22 22` -> check this port are opened by this ip
 * `df -TH` Displays disk space usage in a human-readable format
 * `lscpu` Provides detailed information about the CPU architecture
 * `free -m` Shows memory usage (RAM and swap) in megabytes
@@ -117,3 +119,18 @@ sudo lsof -i :6443
 ```
 
 curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash -s -- --mariadb-server-version="mariadb-10.6"
+
+
+# symlink/mount/bind
+
+```shell
+# Mount NFS share locally for Nginx
+mount --bind /mnt/nfs_share /var/www/html
+
+# Or create a symlink
+ln -s /mnt/nfs_share /var/www/html
+```
+
+
+
+

@@ -82,9 +82,9 @@ rs.initiate(
   {
     _id: "mongo-replica",
     members: [
-      { _id: 0, host: "192.168.56.101:27017" },  // Primary node
-      { _id: 1, host: "192.168.56.102:27017" },  // Secondary node 1
-      { _id: 2, host: "192.168.56.103:27017" }   // Secondary node 2
+      { _id: 0, host: "192.168.141.81:27017" },  // Primary node
+      { _id: 1, host: "192.168.141.82:27017" },  // Secondary node 1
+      { _id: 2, host: "192.168.141.83:27017" }   // Secondary node 2
     ]
   }
 )

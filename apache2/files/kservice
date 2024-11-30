@@ -1,0 +1,12 @@
+/var/log/kservice.log {
+    su root root
+    daily
+    rotate 7
+    compress
+    missingok
+    notifempty
+    create 644 root root
+    postrotate
+        systemctl reload apache2
+    endscript
+}

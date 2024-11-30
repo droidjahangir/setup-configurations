@@ -2,7 +2,7 @@
 
 official link : https://www.namecheap.com/support/knowledgebase/article.aspx/9446/2290/generating-csr-on-apache-opensslmodsslnginx-heroku/
 
-## Generate
+## Generate certificate signing request (CSR)
 
 ```shell
 openssl req -new -newkey rsa:2048 -nodes -keyout yourdomain_tld.key -out yourdomain_tld.csr
@@ -12,7 +12,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout yourdomain_tld.key -out yourdom
 
 **First check both csr and private key generate same hash**
 
-For the certificate:
+For the csr/certificate_signing_request:
 ```shell
 openssl x509 -noout -modulus -in /cert/example.crt | openssl md5
 ```
@@ -36,7 +36,3 @@ Check apache configuration
 ```shell
 apache2ctl -S
 ```
-
-
-10.12.2.4
-S?>TRer8v_7024!

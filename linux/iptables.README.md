@@ -12,13 +12,21 @@ iptables -L -v -n
 * `n` for numeric output
 
 ### Persist Ip table rules
-Install this package `sudo apt-get install iptables-persistent`
+Install this package
+```shell
+#ubuntu
+sudo apt-get install iptables-persistent
 
-during save `sudo netfilter-persistent save`
+#centos/redhat
+yum install iptables
+```
 
-Or
+Save rules
 
 ```shell
 sudo iptables-save > /etc/iptables/rules.v4
 ```
+
+iptables -I INPUT 1 -p tcp --dport 3306 -j ACCEPT
+
 
